@@ -1244,7 +1244,7 @@ public class Execute {
      *     </a>
      */
     public void recordSession(String file) throws ExecuteException {
-        record("record_session", null, 0, 0, 0, true, false, null, null, null, null,
+        record("record_session", file, 0, 0, 0, true, false, null, null, null, null,
                 null, null, 0);
     }
     
@@ -1685,11 +1685,11 @@ public class Execute {
         return sb.toString();
     }
     
-    private CommandResponse sendExeMesg(String app) throws ExecuteException {
+    protected CommandResponse sendExeMesg(String app) throws ExecuteException {
         return sendExeMesg(app, null);
     }
 
-    private CommandResponse sendExeMesg(String app, String args)
+    protected CommandResponse sendExeMesg(String app, String args)
             throws ExecuteException {
         SendMsg msg = new SendMsg();
         msg.addCallCommand("execute");
