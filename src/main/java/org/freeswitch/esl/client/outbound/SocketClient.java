@@ -61,7 +61,8 @@ public class SocketClient extends AbstractService {
 				.channel(NioServerSocketChannel.class)
 				.childHandler(new OutboundChannelInitializer(clientHandlerFactory))
 				.childOption(ChannelOption.TCP_NODELAY, true)
-				.childOption(ChannelOption.SO_KEEPALIVE, true);
+				.childOption(ChannelOption.SO_KEEPALIVE, true)
+				.childOption(ChannelOption.AUTO_CLOSE, true);
 
 		serverChannel = bootstrap.bind(bindAddress).syncUninterruptibly().channel();
 		notifyStarted();
